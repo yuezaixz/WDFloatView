@@ -1,0 +1,2 @@
+# WDFloatView
+一个View控件，点击UiView或者右上角按钮后浮动出提示的View，再同样的操作返回主View
