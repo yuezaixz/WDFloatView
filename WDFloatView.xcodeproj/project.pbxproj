@@ -13,6 +13,7 @@
 		A6FAEB511C73105800EB45C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6FAEB4F1C73105800EB45C4 /* Main.storyboard */; };
 		A6FAEB531C73105800EB45C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6FAEB521C73105800EB45C4 /* Assets.xcassets */; };
 		A6FAEB561C73105800EB45C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6FAEB541C73105800EB45C4 /* LaunchScreen.storyboard */; };
+		A6FAEB601C73115900EB45C4 /* WDFloatView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FAEB5F1C73115900EB45C4 /* WDFloatView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		A6FAEB521C73105800EB45C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6FAEB551C73105800EB45C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6FAEB571C73105800EB45C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6FAEB5E1C73115900EB45C4 /* WDFloatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDFloatView.h; sourceTree = "<group>"; };
+		A6FAEB5F1C73115900EB45C4 /* WDFloatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDFloatView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 		A6FAEB451C73105800EB45C4 /* WDFloatView */ = {
 			isa = PBXGroup;
 			children = (
+				A6FAEB5D1C73111300EB45C4 /* WDFloatView */,
 				A6FAEB491C73105800EB45C4 /* AppDelegate.h */,
 				A6FAEB4A1C73105800EB45C4 /* AppDelegate.m */,
 				A6FAEB4C1C73105800EB45C4 /* ViewController.h */,
@@ -77,6 +81,15 @@
 				A6FAEB471C73105800EB45C4 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A6FAEB5D1C73111300EB45C4 /* WDFloatView */ = {
+			isa = PBXGroup;
+			children = (
+				A6FAEB5E1C73115900EB45C4 /* WDFloatView.h */,
+				A6FAEB5F1C73115900EB45C4 /* WDFloatView.m */,
+			);
+			name = WDFloatView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6FAEB601C73115900EB45C4 /* WDFloatView.m in Sources */,
 				A6FAEB4E1C73105800EB45C4 /* ViewController.m in Sources */,
 				A6FAEB4B1C73105800EB45C4 /* AppDelegate.m in Sources */,
 				A6FAEB481C73105800EB45C4 /* main.m in Sources */,
