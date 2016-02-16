@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "WDFloatView.h"
 
 @interface ViewController ()
+
+@property (strong, nonatomic) WDFloatView *floatView;
 
 @end
 
@@ -16,7 +19,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    UIView *mainView = ({
+        UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 500)];
+        tempView.backgroundColor = [UIColor yellowColor];
+        tempView;
+    });
+    
+    UIView *promptView = ({
+        UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 300)];
+        tempView.backgroundColor = [UIColor blueColor];
+        tempView;
+    });
+    
+    self.floatView = [[WDFloatView alloc] initWithOrignPoint:CGPointMake(0, 40) mainView:mainView promptView:promptView];
+    self.floatView.layer.borderColor = [UIColor blackColor].CGColor;
+    self.floatView.layer.borderWidth = 2.0;
+    [self.view addSubview:self.floatView];
 }
 
 - (void)didReceiveMemoryWarning {

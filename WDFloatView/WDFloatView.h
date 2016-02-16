@@ -11,8 +11,15 @@
 @interface WDFloatView : UIView
 
 @property (strong, nonatomic) UIView *mainView;
-@property (strong, nonatomic) UIView *promtView;
+@property (strong, nonatomic) UIView *promptView;
 
-@property (strong, nonatomic) UIButton *promtBtn;
+@property (strong, nonatomic) UIButton *promptBtn;
+
+/**
+ *  是否显示主View中
+ */
+@property (nonatomic) BOOL isMain;
+
+-(instancetype)initWithOrignPoint:(CGPoint)orign mainView:(UIView *)mainView promptView:(UIView *)promptView;
 
 @end
