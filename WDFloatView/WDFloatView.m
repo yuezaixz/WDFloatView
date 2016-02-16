@@ -14,7 +14,7 @@
     self = [super initWithFrame:CGRectMake(orign.x, orign.y, mainView.bounds.size.width, mainView.bounds.size.height)];
     if (self) {
         self.clipsToBounds = YES;
-        self.isMain = YES;
+        _isMain = YES;
         
         UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(swtichAction)];
         
@@ -38,11 +38,37 @@
     return self;
 }
 
+-(void)setMainView:(UIView *)mainView{
+    _mainView = mainView;
+    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(swtichAction)];
+    [_mainView addGestureRecognizer:tapGes];
+    [self insertSubview:_mainView belowSubview:self.promptBtn];
+    if (self.isMain) {
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, _mainView.bounds.size.width, _mainView.bounds.size.height);
+    }
+    
+}
+
+-(void)setPromptView:(UIView *)promptView{
+    _promptView = promptView;
+    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(swtichAction)];
+    [_promptView addGestureRecognizer:tapGes];
+    [self insertSubview:_promptView belowSubview:self.promptBtn];
+    if (!self.isMain) {
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, _promptView.bounds.size.width, _promptView.bounds.size.height);
+    }
+}
+
 - (void)swtichAction {
+    self.isMain = !self.isMain;
+}
+
+-(void)setIsMain:(BOOL)isMain{
+    _isMain = isMain;
     __weak WDFloatView* weakSelf = (WDFloatView *)self;
     
     [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        if (weakSelf.isMain) {
+        if (!isMain) {
             weakSelf.frame = CGRectMake(weakSelf.frame.origin.x, weakSelf.frame.origin.y, weakSelf.promptView.bounds.size.width, weakSelf.promptView.bounds.size.height);
             
             weakSelf.mainView.alpha = 0.0;
@@ -53,12 +79,11 @@
             weakSelf.mainView.alpha = 1.0;
             weakSelf.promptView.alpha = 0.0;
         }
+
         [weakSelf.superview layoutIfNeeded];
-        weakSelf.isMain = !weakSelf.isMain;
     } completion:^(BOOL finished) {
         
     }];
-    
 }
 
 @end
