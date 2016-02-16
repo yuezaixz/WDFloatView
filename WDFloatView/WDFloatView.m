@@ -13,8 +13,17 @@
 -(instancetype)initWithOrignPoint:(CGPoint)orign mainView:(UIView *)mainView promptView:(UIView *)promptView{
     self = [super initWithFrame:CGRectMake(orign.x, orign.y, mainView.bounds.size.width, mainView.bounds.size.height)];
     if (self) {
+        self.clipsToBounds = YES;
+        self.isMain = YES;
+        
+        UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(swtichAction)];
+        
         self.mainView = mainView;
         self.promptView = promptView;
+        
+        [self.mainView addGestureRecognizer:tapGes];
+        tapGes = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(swtichAction)];
+        [self.promptView addGestureRecognizer:tapGes];
         self.promptBtn = ({
             UIButton *tempBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.bounds.size.width-100-4, 4, 100, 40)];
             [tempBtn addTarget:self action:@selector(swtichAction) forControlEvents:UIControlEventTouchUpInside];
