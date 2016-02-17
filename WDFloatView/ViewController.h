@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WDFloatView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<WDFloatViewDelegate>
 
 
 @end
