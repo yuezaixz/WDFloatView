@@ -76,8 +76,6 @@
 
 -(void)setMainView:(UIView *)mainView{
     _mainView = mainView;
-    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(swtichAction)];
-    [_mainView addGestureRecognizer:tapGes];
     [self insertSubview:_mainView belowSubview:self.promptBtn];
     if (self.isMain) {
         self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, _mainView.bounds.size.width, _mainView.bounds.size.height);
@@ -87,8 +85,6 @@
 
 -(void)setPromptView:(UIView *)promptView{
     _promptView = promptView;
-    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(swtichAction)];
-    [_promptView addGestureRecognizer:tapGes];
     [self insertSubview:_promptView belowSubview:self.promptBtn];
     if (!self.isMain) {
         self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, _promptView.bounds.size.width, _promptView.bounds.size.height);
