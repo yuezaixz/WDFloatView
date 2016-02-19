@@ -51,6 +51,7 @@
         //这两个设置主要是为了显示效果更明显设置
         self.floatView1.layer.borderColor = [UIColor blackColor].CGColor;
         self.floatView1.layer.borderWidth = 2.0;
+        self.floatView1.floatViewTitle = @"界面1";
         self.floatView1.delegate = self;
         [self.floatConView1 addSubview:self.floatView1];
         
@@ -75,6 +76,7 @@
         //这两个设置主要是为了显示效果更明显设置
         self.floatView2.layer.borderColor = [UIColor blackColor].CGColor;
         self.floatView2.layer.borderWidth = 2.0;
+        self.floatView2.floatViewTitle = @"界面2";
         self.floatView2.delegate = self;
         [self.floatConView2 addSubview:self.floatView2];
         
@@ -99,6 +101,7 @@
         //这两个设置主要是为了显示效果更明显设置
         self.floatView3.layer.borderColor = [UIColor blackColor].CGColor;
         self.floatView3.layer.borderWidth = 2.0;
+        self.floatView3.floatViewTitle = @"界面3";
         self.floatView3.delegate = self;
         [self.floatConView3 addSubview:self.floatView3];
         
@@ -123,6 +126,7 @@
         //这两个设置主要是为了显示效果更明显设置
         self.floatView4.layer.borderColor = [UIColor blackColor].CGColor;
         self.floatView4.layer.borderWidth = 2.0;
+        self.floatView4.floatViewTitle = @"界面4";
         self.floatView4.delegate = self;
         [self.floatConView4 addSubview:self.floatView4];
         

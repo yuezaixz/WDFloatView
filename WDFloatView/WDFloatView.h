@@ -23,6 +23,12 @@
 
 @property (strong, nonatomic) UIButton *promptBtn;
 
+@property (strong, nonatomic) NSString *floatViewTitle;
+
+@property (strong, nonatomic) UIColor *titleViewColor;
+@property (strong, nonatomic) UIFont *titleFont;
+@property (strong, nonatomic) UIColor *titleColor;
+
 /**
  *  是否显示主View中
  */
