@@ -27,12 +27,6 @@
 -(void)awakeFromNib{
     self.clipsToBounds = YES;
     _isMain = YES;
-    self.promptBtn = ({
-        UIButton *tempBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.bounds.size.width-100-4, 4, 100, 40)];
-        [tempBtn addTarget:self action:@selector(swtichAction) forControlEvents:UIControlEventTouchUpInside];
-        tempBtn.backgroundColor = [UIColor purpleColor];
-        tempBtn;
-    });
     [self addSubview:self.promptBtn];
 }
 
@@ -54,31 +48,30 @@
                                          CGRectGetWidth(self.mainView.frame),
                                          CGRectGetHeight(self.mainView.frame));
         self.promptView.frame = CGRectMake(self.promptView.frame.origin.x,
-                                         self.promptView.frame.origin.y+TITLE_VIEW_HEIGHT,
-                                         CGRectGetWidth(self.promptView.frame),
-                                         CGRectGetHeight(self.promptView.frame));
+                                           self.promptView.frame.origin.y+TITLE_VIEW_HEIGHT,
+                                           CGRectGetWidth(self.promptView.frame),
+                                           CGRectGetHeight(self.promptView.frame));
         
-        self.promptBtn = ({
-            UIButton *tempBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.bounds.size.width-100-4, 4, 100, 40)];
-            [tempBtn addTarget:self action:@selector(swtichAction) forControlEvents:UIControlEventTouchUpInside];
-            tempBtn.backgroundColor = [UIColor purpleColor];
-            tempBtn;
-        });
         [self addSubview:self.titleView];
         [self.titleView addSubview:self.titleLabel];
         [self addSubview:self.mainView];
         [self addSubview:self.promptView];
-        [self addSubview:self.promptBtn];
         self.promptView.alpha = 0.0;
     }
     return self;
+}
+
+-(void)setPromptBtn:(UIButton *)promptBtn{
+    _promptBtn = promptBtn;
+    [_promptBtn addTarget:self action:@selector(swtichAction) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:_promptBtn];
 }
 
 -(void)setMainView:(UIView *)mainView{
     _mainView = mainView;
     [self insertSubview:_mainView belowSubview:self.promptBtn];
     if (self.isMain) {
-        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, _mainView.bounds.size.width, _mainView.bounds.size.height);
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, _mainView.bounds.size.width, _mainView.bounds.size.height+TITLE_VIEW_HEIGHT);
     }
     
 }
@@ -87,7 +80,7 @@
     _promptView = promptView;
     [self insertSubview:_promptView belowSubview:self.promptBtn];
     if (!self.isMain) {
-        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, _promptView.bounds.size.width, _promptView.bounds.size.height);
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, _promptView.bounds.size.width, _promptView.bounds.size.height+TITLE_VIEW_HEIGHT);
     }
 }
 
@@ -117,12 +110,12 @@
     _isMain = isMain;
     
     if (!isMain) {
-        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.promptView.bounds.size.width, self.promptView.bounds.size.height);
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.promptView.bounds.size.width, self.promptView.bounds.size.height+TITLE_VIEW_HEIGHT);
         
         self.mainView.alpha = 0.0;
         self.promptView.alpha = 1.0;
     } else {
-        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.mainView.bounds.size.width, self.mainView.bounds.size.height);
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.mainView.bounds.size.width, self.mainView.bounds.size.height+TITLE_VIEW_HEIGHT);
         
         self.mainView.alpha = 1.0;
         self.promptView.alpha = 0.0;
@@ -141,7 +134,7 @@
 -(void)canTouchToPrompt:(BOOL)canTouchToPrompt{
     if (canTouchToPrompt) {
         touchToPromptGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(swtichAction)];
-        [self.mainView addGestureRecognizer:touchToMainGesture];
+        [self.mainView addGestureRecognizer:touchToPromptGesture];
     } else {
         [self.mainView removeGestureRecognizer:touchToPromptGesture];
     }
